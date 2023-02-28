@@ -1609,6 +1609,43 @@
 			    </table>
 		   </div>
 		</div>
+		<div class="modal" id="info-modal">
+			<div class="modal-contenedor" id="info-modal-contenedor">
+				<header id="modal-header">
+					<h3>Información del documento</h3>
+					<button type="button" id="info-close-modal" title="Cerrar">
+		        		<span>&times;</span>
+		    		</button>
+				</header>
+				<hr />
+				<div class="modal-contenido" id="modal-contenido">					
+					<div id="info-content">
+						<div class="info-row">
+							<div>
+								<span class="bold">Fecha de Registro:</span>
+								<span id="date">06/06/2006</span>
+							</div>
+							<div>
+								<span class="bold">Registrado por:</span>
+								<span id="who">Mandingo</span>
+							</div>
+						</div>
+						<div class="info-row">
+							<div>
+								<span class="bold">Hora de Registro:</span>
+								<span id="hour">14:69:00</span>
+							</div>
+							<div>
+								<span class="bold">Actualizado el:</span>
+								<span id="date-update">No hubo actualizaciones</span>
+							</div>
+						</div>		
+					</div>					
+				</div>
+				<hr />
+				<footer id="modal-footer"></footer>
+			</div>
+		</div>
 	</main>
 
 	<script>
@@ -1658,6 +1695,38 @@
 
 		    $("#content-sidebar").on("click", function(e) {
 				e.stopPropagation();
+			});
+		});
+
+
+		document.querySelectorAll(".fa-circle-info").forEach(el => {
+			el.addEventListener("click", function(e) {			
+			  	
+			  	let fila = e.target.parentNode.parentNode.parentNode;
+			  	let td_actions = e.target.parentNode.parentNode;
+			  	fila.style.backgroundColor = "#a22629";
+			  	td_actions.style.backgroundColor = "#a22629";
+			  	fila.style.color = "white";
+			  	fila.querySelector("#datatable i.fa-file-pdf").style.color = "white";
+			  	document.getElementById("info-modal").classList.add("show");
+				document.getElementById("info-modal-contenedor").classList.add("show-transition");
+				document.querySelector("body").style.overflow = "hidden";
+
+				document.getElementById("info-close-modal").onclick = function() {
+
+			    	document.querySelectorAll("#datatable tbody tr").forEach(el => {
+				  		if (el.hasAttribute("style")) {
+				  			el.removeAttribute("style");
+				  			el.querySelector("#datatable tbody tr #actions").style.backgroundColor = "";
+				  			el.querySelector("#datatable tbody tr td .fa-file-pdf").removeAttribute("style");
+				  			el.querySelector("#datatable tbody tr td .fa-circle-info").removeAttribute("style");
+				  		}
+					});
+
+			    	document.getElementById("info-modal").classList.remove("show");
+					document.getElementById("info-modal-contenedor").classList.remove("show-transition");
+					document.querySelector("body").removeAttribute("style");
+			    }
 			});
 		});
 
