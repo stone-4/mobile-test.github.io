@@ -1554,7 +1554,8 @@
 			</div>		
 		</div>
 	</nav>
-	<main style= "background: white; box-shadow: 0 0 10px -5px grey">		
+	<main style= "background: white; box-shadow: 0 0 10px -5px grey">
+		<button class="imprimir" style="padding: 10px;">Imprimir</button>	
 		<div id="datatable_contenedor">
 			<div id="date_range_filter_wrapper">		    
 				<h4>Buscar por Fecha de Documento</h4>
@@ -1800,6 +1801,11 @@
 			});
 		});		
 
+		document.querySelectorAll(".imprimir").forEach(function(e) {
+            e.addEventListener("click", function() {
+                print();
+            });
+        });
 	</script>
 </body>
 </html>	
