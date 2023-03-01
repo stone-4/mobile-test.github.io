@@ -1658,7 +1658,7 @@
 				<hr />
 				<div class="modal-contenido" id="modal-contenido">
 					<div id="documento-archivo">
-						<iframe id="documento-iframe" src="ViewerJS/#../resources/joyo.pdf"></iframe>
+						<iframe id="documento-iframe"></iframe>
 					</div>
 				</div>
 			</div>
@@ -1717,8 +1717,8 @@
 
 		document.querySelectorAll("#datatable .fa-file-pdf").forEach(el => {
 			el.addEventListener("click", function(e) {
-			    /*let ruta_documento = "resources/joyo.pdf";
-		      	document.getElementById("documento-iframe").setAttribute("src", ruta_documento);*/
+			    let ruta_documento = "ViewerJS/#../resources/joyo.pdf";
+		      	document.getElementById("documento-iframe").setAttribute("src", ruta_documento);
 
 		      	let fila = e.target.parentNode.parentNode;
 				let td_actions = e.target.parentNode.nextElementSibling;
@@ -1745,7 +1745,7 @@
 
 			document.getElementById("documento-modal").classList.remove("show");
 		    document.getElementById("documento-modal-contenedor").classList.remove("show-transition");
-		    //document.getElementById("documento-iframe").removeAttribute("src");
+		    document.getElementById("documento-iframe").removeAttribute("src");
 		    document.querySelector("body").removeAttribute("style");
 		};
 
