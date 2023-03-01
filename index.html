@@ -1589,7 +1589,7 @@
 			        </thead>
 			        <tbody>
 				      <tr>
-					      <td>lorem lorem lorem lorem</td>
+					      <td>Shape-Box</td>
 					      <td>lorem lorem lorem lorem</td>  
 					      <td>lorem lorem lorem lorem</td>
 					      <td>lorem lorem lorem lorem</td>
@@ -1717,8 +1717,27 @@
 
 		document.querySelectorAll("#datatable .fa-file-pdf").forEach(el => {
 			el.addEventListener("click", function(e) {
-			    let ruta_documento = "ViewerJS/#../resources/test.pdf";
-		      	document.getElementById("documento-iframe").setAttribute("src", ruta_documento);
+
+				function isMobile(){
+				    return (
+				        (navigator.userAgent.match(/Android/i)) ||
+				        (navigator.userAgent.match(/webOS/i)) ||
+				        (navigator.userAgent.match(/iPhone/i)) ||
+				        (navigator.userAgent.match(/iPod/i)) ||
+				        (navigator.userAgent.match(/iPad/i)) ||
+				        (navigator.userAgent.match(/BlackBerry/i))
+				    );
+				}
+
+				if ( isMobile() ) {
+				 // código en el caso de que sea un dispositivo móvil
+					var ruta_documento = "resources/ViewerJS/#../test.pdf";
+				} else {
+				 // código en el caso de que no sea un dispositivo móvil
+					var ruta_documento = "resources/test.pdf";
+				}
+
+				document.getElementById("documento-iframe").setAttribute("src", ruta_documento);
 
 		      	let fila = e.target.parentNode.parentNode;
 				let td_actions = e.target.parentNode.nextElementSibling;
@@ -1779,7 +1798,7 @@
 					document.querySelector("body").removeAttribute("style");
 			    }
 			});
-		});
+		});		
 
 	</script>
 </body>
