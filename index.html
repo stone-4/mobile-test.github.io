@@ -1342,6 +1342,10 @@
 			    width: 450px;
 		        margin: 0 auto;
 			}
+
+			#documento-modal-contenedor {
+				height: 650px;
+			}
 		}
 
 		@media (max-width: 597px) {
@@ -1554,8 +1558,7 @@
 			</div>		
 		</div>
 	</nav>
-	<main style= "background: white; box-shadow: 0 0 10px -5px grey">
-		<button class="imprimir" style="padding: 10px;">Imprimir</button>	
+	<main style= "background: white; box-shadow: 0 0 10px -5px grey">	
 		<div id="datatable_contenedor">
 			<div id="date_range_filter_wrapper">		    
 				<h4>Buscar por Fecha de Documento</h4>
@@ -1799,13 +1802,44 @@
 					document.querySelector("body").removeAttribute("style");
 			    }
 			});
-		});		
+		});
 
-		document.querySelectorAll(".imprimir").forEach(function(e) {
-            e.addEventListener("click", function() {
-                print();
+       /* document.querySelectorAll(".imprimir").forEach(function(element) {
+            element.addEventListener("click", function() {
+                document.getElementById("documento-iframe").print();
             });
-        });
+        });*/
+
+       /* content = document.getElementById("documento-iframe");
+        content.addEventListener('click', function handleClick(event) {
+            if (event.target.classList.contains('imprimir')) {
+                console.log("El elemento existe");
+          	}
+          	else{
+          		console.log("El elemento no existe");
+          	}
+        })*/
+
+        let content = document.getElementById("documento-iframe");
+        //let boton_print = document.getElementById("imprimir");
+
+        /*if ( content ) {
+            console.log("Si existe el elemento");
+        }
+        else {
+            console.log("No existe el elemento");
+        }*/        
+
+        content.addEventListener("click", function handleClick(event) {
+		    if (event.target.classList.contains("imprimir")) {
+		        console.log("El botón Imprimir funciona");
+		        //document.getElementById("documento-iframe").print();
+		  	}
+		  	else{
+		  		console.log("El elemento NO se encuntra");
+		  	}
+		});
+
 	</script>
 </body>
 </html>	
